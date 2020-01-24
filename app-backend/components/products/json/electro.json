@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Geladeira Frost Free",
+        "img": "https://brastemp.vteximg.com.br/arquivos/ids/161652-1000-1000/BRO80AK-geladeira-brastemp-side-inverse-540-litros-VITRINE-mouseover_1650x1450.jpg?v=636485953570730000",
+        "brand": "Brastemp",
+        "price": 4.500
+    },
+    {
+        "name": "Pipoqueira Pop Mais",
+        "img": "https://images-na.ssl-images-amazon.com/images/I/51ZI0loOIBL._SL1000_.jpg",
+        "brand": "Cadence",
+        "price": 69.80
+    },
+    {
+        "name": "Micro-ondas 20 Litros",
+        "img": "https://www.koerich.com.br/ccstore/v1/images/?source=/file/v254333350061394572/products/3102900.01.jpg&width=645&height=645",
+        "brand": "Consul",
+        "price": 39.90
+    },
+    {
+        "name": "Forno Elétrico",
+        "img": "https://a-static.mlcdn.com.br/618x463/forno-eletrico-fischer-autolimpante-grill-44l-1323-5697/magazineluiza/010920100/f32db0bd3bf974eafee9c2429554da0c.jpg",
+        "brand": "Fischer",
+        "price": 699.0
+    },
+    {
+        "name": "Lavadora 12KG",
+        "img": "https://a-static.mlcdn.com.br/618x463/lavadora-brastemp-12kg-com-ciclo-tira-manchas-advanced-e-ciclo-antibolinha-127v-bwk12ab/comprebel2/25986/8d8dd7075a624c8da3a33c1e3d8b0f0c.jpg",
+        "brand": "Brastemp",
+        "price": 1667.0
+    }
+]

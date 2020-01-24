@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Xiaomi Balato",
+        "img": "https://images-na.ssl-images-amazon.com/images/I/51UGaYg2%2BNL._SL1000_.jpg",
+        "brand": "Xiaomi",
+        "price": 400
+    },
+    {
+        "name": "Iphone 10 XS MAX PLUS",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRznGPp0Zn2MOkKFw06j2Lgaz7bV3rUJtFYeXLNiEeXC-Hn5WVz&s",
+        "brand": "Apple",
+        "price": 8000
+    },
+    {
+        "name": "Windows Phone",
+        "img": "https://timeline.canaltech.com.br/336793.1400/microsoft-encerra-windows-phone-store-em-dezembro.jpg",
+        "brand": "Microsoft",
+        "price": 289.90
+    },
+    {
+        "name": "BlackBerry Raridade",
+        "img": "https://static3.tcdn.com.br/img/img_prod/585306/blackberry_9300_curve_3g_nao_possui_whatsapp_usado_316_1_20190118113205.jpg",
+        "brand": "BlackBerry",
+        "price": 9999.99
+    }
+]
