@@ -1,44 +1,44 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_shop/pages/cellphones/widgets/cell_item.dart';
+import 'package:flutter_shop/stores/cellphones/cellphones_store.dart';
 import 'package:flutter_shop/widgets/app_drawer.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_shop/widgets/centered_progress_indicator.dart';
 
-class CellPhonesPages extends StatelessWidget {
+class CellPhonesPages extends StatefulWidget {
+  @override
+  _CellPhonesPagesState createState() => _CellPhonesPagesState();
+}
+
+class _CellPhonesPagesState extends State<CellPhonesPages> {
+  final CellphoneStore cellStore = CellphoneStore();
+
+  @override
+  void initState() {
+    super.initState();
+    cellStore.fetchElectros();
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('Desenhando page cellphone');
     return Scaffold(
       appBar: AppBar(
         title: Text('Celulares'),
       ),
       drawer: AppDrawer(),
       body: Container(
-        child: Center(
-          child: FutureBuilder(
-              future: getData(),
-              builder: (context, snapshot) {
-                print(snapshot);
-                if (snapshot.data != null) {
-                  return Text(snapshot.data.toString());
-                } else {
-                  return Text('Carregando');
-                }
-              }),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: (Icon(Icons.add)),
-        onPressed: () {
-          getData();
-        },
-      ),
+          child: Observer(
+        builder: (_) => cellStore.cellphones != null
+            ? ListView.builder(
+                itemCount: cellStore.cellphones.length,
+                itemBuilder: (_, index) {
+                  final cellphone = cellStore.cellphones[index];
+                  return CellItem(cellphone);
+                },
+              )
+            : CenteredProgressIndicator(),
+      )),
     );
-  }
-
-  Future<dynamic> getData() async {
-    const url = 'http://10.0.75.1:3000/products/electro';
-    http.Response response = await http.get(url);
-    var body = json.decode(response.body);
-    return body;
   }
 }
