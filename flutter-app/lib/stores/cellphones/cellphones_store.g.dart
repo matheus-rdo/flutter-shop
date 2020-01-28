@@ -30,10 +30,10 @@ mixin _$CellphoneStore on _CellphoneStoreBase, Store {
       ActionController(name: '_CellphoneStoreBase');
 
   @override
-  dynamic fetchElectros() {
+  dynamic fetchCellphones() {
     final _$actionInfo = _$_CellphoneStoreBaseActionController.startAction();
     try {
-      return super.fetchElectros();
+      return super.fetchCellphones();
     } finally {
       _$_CellphoneStoreBaseActionController.endAction(_$actionInfo);
     }

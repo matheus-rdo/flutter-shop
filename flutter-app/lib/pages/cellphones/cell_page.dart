@@ -16,7 +16,7 @@ class _CellPhonesPagesState extends State<CellPhonesPages> {
   @override
   void initState() {
     super.initState();
-    cellStore.fetchElectros();
+    cellStore.fetchCellphones();
   }
 
   @override
@@ -30,8 +30,13 @@ class _CellPhonesPagesState extends State<CellPhonesPages> {
       body: Container(
           child: Observer(
         builder: (_) => cellStore.cellphones != null
-            ? ListView.builder(
+            ? GridView.builder(
                 itemCount: cellStore.cellphones.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: MediaQuery.of(context).orientation ==
+                            Orientation.portrait
+                        ? 2
+                        : 3),
                 itemBuilder: (_, index) {
                   final cellphone = cellStore.cellphones[index];
                   return CellItem(cellphone);
@@ -39,6 +44,10 @@ class _CellPhonesPagesState extends State<CellPhonesPages> {
               )
             : CenteredProgressIndicator(),
       )),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.refresh),
+        onPressed: () => cellStore.fetchCellphones(),
+      ),
     );
   }
 }
