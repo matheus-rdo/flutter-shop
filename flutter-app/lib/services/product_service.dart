@@ -9,4 +9,9 @@ class ProductService {
     Response<List<dynamic>> response = await _api.get('/products/cell');
     return response.data.map((d) => new Product.fromJson(d)).toList();
   }
+
+  Future<List<Product>> loadPromotions() async {
+    Response<List<dynamic>> response = await _api.get('/products/promo');
+    return response.data.map((d) => new Product.fromJson(d)).toList();
+  }
 }

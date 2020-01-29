@@ -5,7 +5,7 @@ import 'package:flutter_shop/shop_app.dart';
 
 void main() {
   var appConfig =
-      AppConfig(apiBaseUrl: 'http://10.0.75.1:3000', child: ShopApp());
+      AppConfig(apiBaseUrl: 'http://10.1.24.87:3000', child: ShopApp());
   setupLocator(appConfig);
   runApp(appConfig);
 }
