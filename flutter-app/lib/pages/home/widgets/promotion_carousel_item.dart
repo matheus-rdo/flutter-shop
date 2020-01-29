@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_shop/models/product.dart';
+import 'package:flutter_shop/stores/cart/cart_store.dart';
+import 'package:provider/provider.dart';
 
 class PromotionCarouselItem extends StatelessWidget {
   final Product product;
@@ -8,6 +11,7 @@ class PromotionCarouselItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartStore = Provider.of<CartStore>(context);
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 500,
@@ -40,12 +44,26 @@ class PromotionCarouselItem extends StatelessWidget {
                       Text('${product.price.toStringAsFixed(2)}')
                     ],
                   ),
-                  IconButton(
-                    color: Colors.blue[600],
-                    icon: Icon(Icons.add_shopping_cart),
-                    padding: EdgeInsets.all(0),
-                    onPressed: () {
-                      print('add to kart');
+                  Observer(
+                    builder: (_) {
+                      return cartStore.items
+                              .any((item) => item.product.id == product.id)
+                          ? IconButton(
+                              color: Colors.red[400],
+                              icon: Icon(Icons.remove_circle),
+                              padding: EdgeInsets.all(0),
+                              onPressed: () {
+                                cartStore.remove(product);
+                              },
+                            )
+                          : IconButton(
+                              color: Colors.blue[600],
+                              icon: Icon(Icons.add_shopping_cart),
+                              padding: EdgeInsets.all(0),
+                              onPressed: () {
+                                cartStore.addProduct(product);
+                              },
+                            );
                     },
                   )
                 ],

@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_shop/pages/cellphones/widgets/cell_item.dart';
 import 'package:flutter_shop/stores/cellphones/cellphones_store.dart';
 import 'package:flutter_shop/widgets/app_drawer.dart';
+import 'package:flutter_shop/widgets/cart_bar_action.dart';
 import 'package:flutter_shop/widgets/centered_progress_indicator.dart';
 
 class CellPhonesPages extends StatefulWidget {
@@ -25,6 +26,7 @@ class _CellPhonesPagesState extends State<CellPhonesPages> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Celulares'),
+        actions: <Widget>[CartBarAction()],
       ),
       drawer: AppDrawer(),
       body: Container(

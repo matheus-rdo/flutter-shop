@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_shop/models/product.dart';
+import 'package:flutter_shop/stores/cart/cart_store.dart';
+import 'package:provider/provider.dart';
 
 class CellItem extends StatelessWidget {
   final Product cellphone;
@@ -8,6 +11,7 @@ class CellItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartStore = Provider.of<CartStore>(context);
     return Card(
       margin: EdgeInsets.all(10),
       elevation: 2,
@@ -16,9 +20,8 @@ class CellItem extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(10, 10, 10, 0.0),
         child: Column(
           children: <Widget>[
-            Image.network(
-              cellphone.img,
-              height: 100,
+            Expanded(
+              child: Image.network(cellphone.img),
             ),
             Container(
               margin: EdgeInsets.only(top: 10),
@@ -32,8 +35,7 @@ class CellItem extends StatelessWidget {
                 style: TextStyle(fontSize: 11, color: Colors.grey[600]),
               ),
             ),
-            Expanded(
-                child: Align(
+            Align(
               alignment: Alignment.bottomCenter,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,17 +49,31 @@ class CellItem extends StatelessWidget {
                       Text('${cellphone.price.toStringAsFixed(2)}')
                     ],
                   ),
-                  IconButton(
-                    color: Colors.blue[600],
-                    icon: Icon(Icons.add_shopping_cart),
-                    padding: EdgeInsets.all(0),
-                    onPressed: () {
-                      print('add to kart');
+                  Observer(
+                    builder: (_) {
+                      return cartStore.items
+                              .any((item) => item.product.id == cellphone.id)
+                          ? IconButton(
+                              color: Colors.red[400],
+                              icon: Icon(Icons.remove_circle),
+                              padding: EdgeInsets.all(0),
+                              onPressed: () {
+                                cartStore.remove(cellphone);
+                              },
+                            )
+                          : IconButton(
+                              color: Colors.blue[600],
+                              icon: Icon(Icons.add_shopping_cart),
+                              padding: EdgeInsets.all(0),
+                              onPressed: () {
+                                cartStore.addProduct(cellphone);
+                              },
+                            );
                     },
                   )
                 ],
               ),
-            ))
+            )
           ],
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_shop/pages/home/widgets/promotion_carousel_item.dart';
 import 'package:flutter_shop/stores/home/home_store.dart';
 import 'package:flutter_shop/widgets/app_drawer.dart';
+import 'package:flutter_shop/widgets/cart_bar_action.dart';
 import 'package:flutter_shop/widgets/centered_progress_indicator.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         bottomOpacity: 0.0,
         elevation: 0.0,
+        actions: <Widget>[CartBarAction()],
       ),
       drawer: AppDrawer(),
       body: SingleChildScrollView(
