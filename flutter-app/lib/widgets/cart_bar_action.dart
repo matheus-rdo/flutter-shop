@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_shop/routes.dart';
 import 'package:flutter_shop/stores/cart/cart_store.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +19,9 @@ class CartBarAction extends StatelessWidget {
           badgeColor: Colors.blue[200],
           child: IconButton(
             icon: Icon(Icons.shopping_cart),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(Routes.cart);
+            },
           ),
         );
       },

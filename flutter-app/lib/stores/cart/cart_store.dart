@@ -13,9 +13,11 @@ abstract class _CartStoreBase with Store {
   int get itemsLength => items.length;
 
   @computed
-  double get totalPrice => items
-      .map((item) => item.product.price * item.quantity)
-      .reduce((a, b) => a + b);
+  double get totalPrice => items.isNotEmpty
+      ? items
+          .map((item) => item.product.price * item.quantity)
+          .reduce((a, b) => a + b)
+      : 0;
 
   @action
   addProduct(Product product, {int quantity = 1}) {
