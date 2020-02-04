@@ -9,11 +9,6 @@ part of 'cart_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CartStore on _CartStoreBase, Store {
-  Computed<int> _$itemsLengthComputed;
-
-  @override
-  int get itemsLength =>
-      (_$itemsLengthComputed ??= Computed<int>(() => super.itemsLength)).value;
   Computed<double> _$totalPriceComputed;
 
   @override
@@ -23,14 +18,14 @@ mixin _$CartStore on _CartStoreBase, Store {
   final _$itemsAtom = Atom(name: '_CartStoreBase.items');
 
   @override
-  ObservableList<CartItem> get items {
+  ObservableList<CartStoreItem> get items {
     _$itemsAtom.context.enforceReadPolicy(_$itemsAtom);
     _$itemsAtom.reportObserved();
     return super.items;
   }
 
   @override
-  set items(ObservableList<CartItem> value) {
+  set items(ObservableList<CartStoreItem> value) {
     _$itemsAtom.context.conditionallyRunInAction(() {
       super.items = value;
       _$itemsAtom.reportChanged();
@@ -45,6 +40,16 @@ mixin _$CartStore on _CartStoreBase, Store {
     final _$actionInfo = _$_CartStoreBaseActionController.startAction();
     try {
       return super.addProduct(product, quantity: quantity);
+    } finally {
+      _$_CartStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic minusProduct(Product product) {
+    final _$actionInfo = _$_CartStoreBaseActionController.startAction();
+    try {
+      return super.minusProduct(product);
     } finally {
       _$_CartStoreBaseActionController.endAction(_$actionInfo);
     }

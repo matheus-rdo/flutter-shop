@@ -15,7 +15,7 @@ class CartBarAction extends StatelessWidget {
           position: BadgePosition.topRight(top: 0, right: 3),
           animationDuration: Duration(milliseconds: 500),
           animationType: BadgeAnimationType.scale,
-          badgeContent: Text(cartStore.itemsLength.toString()),
+          badgeContent: Text(cartStore.items.length.toString()),
           badgeColor: Colors.blue[200],
           child: IconButton(
             icon: Icon(Icons.shopping_cart),

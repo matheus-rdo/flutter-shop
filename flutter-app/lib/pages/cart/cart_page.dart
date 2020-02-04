@@ -15,9 +15,7 @@ class CartPage extends StatelessWidget {
       body: Container(
         child: ListView.builder(
             itemCount: cartStore.items.length,
-            itemBuilder: (context, index) {
-              return CartPageItem(index);
-            }),
+            itemBuilder: (context, index) => CartPageItem(index)),
       ),
       bottomNavigationBar: Container(
         color: Colors.white,
